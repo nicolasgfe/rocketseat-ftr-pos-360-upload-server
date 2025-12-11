@@ -4,6 +4,7 @@ import { type Either, makeLeft, makeRight } from '@/shered/either'
 import { Readable } from 'node:stream'
 import z from 'zod'
 import { InvalidFileFormat } from './errors/invalid-file-format'
+import { uploadFileToStorage } from '@/infra/storage/upload-file-to-storage'
 
 const uploadImageInput = z.object({
   fileName: z.string(),
@@ -22,7 +23,12 @@ export async function uploadImage(input: UploadImageInput): Promise<Either<Inval
     return makeLeft(new InvalidFileFormat())
   }
 
-  // carregar a imagem para o clodflare r2
+  const { key, url } = await uploadFileToStorage({
+    folder: 'images',
+    fileName,
+    contentType,
+    contentStream
+  })
 
 
   await db.insert(schema.uploads).values({
@@ -30,5 +36,5 @@ export async function uploadImage(input: UploadImageInput): Promise<Either<Inval
     remoteKey: fileName,
     remoteUrl: fileName
   })
-  return makeRight({ url: '' })
+  return makeRight({ url })
 }

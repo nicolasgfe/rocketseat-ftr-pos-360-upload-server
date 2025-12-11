@@ -36,6 +36,8 @@ export const uploadImageRoute: FastifyPluginAsyncZod = async server => {
       })
 
       if (isRight(result)) {
+        console.log(unwrapEither(result));
+
         return reply.status(201).send()
       }
 
@@ -43,8 +45,11 @@ export const uploadImageRoute: FastifyPluginAsyncZod = async server => {
 
       switch (error.constructor.name) {
         case "invalidFileFormat":
-          return reply.status(400).send({ message: error.message})
+          return reply.status(400).send({ message: error.message })
       }
     }
   )
 }
+
+
+
