@@ -10,7 +10,8 @@ import fastifyMultipart from '@fastify/multipart'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
 import { transformSwaggerSchema } from './routes/transform-swagger-schema'
-import { GetUploadImageRoute } from './routes/get-uploads'
+import { getUploadImageRoute } from './routes/get-uploads'
+import { exportUploadsRoute } from './routes/exports-uploads'
 
 const server = fastify()
 
@@ -51,7 +52,8 @@ server.register(fastifySwaggerUi, {
 })
 
 server.register(uploadImageRoute)
-server.register(GetUploadImageRoute)
+server.register(getUploadImageRoute)
+server.register(exportUploadsRoute)
 
 server.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running!')

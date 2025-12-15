@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { unwrapEither } from '@/shared/either'
 import { getUploads } from '@/app/functions/get-uploads'
 
-export const GetUploadImageRoute: FastifyPluginAsyncZod = async server => {
+export const getUploadImageRoute: FastifyPluginAsyncZod = async server => {
 	server.get(
 		'/uploads',
 		{
