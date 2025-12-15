@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it, vi } from "vitest";
 import { uploadImage } from "./upload-image";
 import { Readable } from "node:stream";
-import { isLeft, isRight, unwrapEither } from "@/shered/either";
+import { isLeft, isRight, unwrapEither } from "@/shared/either";
 import { randomUUID } from "node:crypto";
 import { db } from "@/infra/db";
 import { schema } from "@/infra/db/schemas";

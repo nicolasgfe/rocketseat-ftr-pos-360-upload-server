@@ -1,6 +1,6 @@
 import { db } from '@/infra/db'
 import { schema } from '@/infra/db/schemas'
-import { type Either, makeLeft, makeRight } from '@/shered/either'
+import { type Either, makeLeft, makeRight } from '@/shared/either'
 import { Readable } from 'node:stream'
 import z from 'zod'
 import { InvalidFileFormat } from './errors/invalid-file-format'

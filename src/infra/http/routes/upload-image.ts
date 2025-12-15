@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { db } from '@/infra/db'
 import { schema } from '@/infra/db/schemas'
 import { uploadImage } from '@/app/functions/upload-image'
-import { isRight, unwrapEither } from '@/shered/either'
+import { isRight, unwrapEither } from '@/shared/either'
 
 export const uploadImageRoute: FastifyPluginAsyncZod = async server => {
   server.post(
@@ -11,6 +11,7 @@ export const uploadImageRoute: FastifyPluginAsyncZod = async server => {
     {
       schema: {
         summary: 'Upload as Image',
+        tags: ['uploads'],
         consumes: ['multipart/form-data'],
         response: {
           201: z.null().describe("image uploaded"),
