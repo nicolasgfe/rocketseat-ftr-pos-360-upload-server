@@ -1,4 +1,4 @@
-import { type Either, makeRight } from '@/shered/either'
+import { type Either, makeRight } from '@/shared/either'
 import z from 'zod'
 import { db } from '@/infra/db'
 import { schema } from '@/infra/db/schemas'
